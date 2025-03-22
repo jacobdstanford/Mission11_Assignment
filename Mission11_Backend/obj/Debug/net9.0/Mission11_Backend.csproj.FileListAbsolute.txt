@@ -1,0 +1,8 @@
+/Users/jacobstanford/Desktop/Mission11_Stanford/Mission11_Backend/obj/Debug/net9.0/Mission11_Backend.csproj.AssemblyReference.cache
+/Users/jacobstanford/Desktop/Mission11_Stanford/Mission11_Backend/obj/Debug/net9.0/Mission11_Backend.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jacobstanford/Desktop/Mission11_Stanford/Mission11_Backend/obj/Debug/net9.0/Mission11_Backend.AssemblyInfoInputs.cache
+/Users/jacobstanford/Desktop/Mission11_Stanford/Mission11_Backend/obj/Debug/net9.0/Mission11_Backend.AssemblyInfo.cs
+/Users/jacobstanford/Desktop/Mission11_Stanford/Mission11_Backend/obj/Debug/net9.0/Mission11_Backend.csproj.CoreCompileInputs.cache
+/Users/jacobstanford/Desktop/Mission11_Stanford/Mission11_Backend/obj/Debug/net9.0/Mission11_Backend.MvcApplicationPartsAssemblyInfo.cs
+/Users/jacobstanford/Desktop/Mission11_Stanford/Mission11_Backend/obj/Debug/net9.0/Mission11_Backend.MvcApplicationPartsAssemblyInfo.cache
+/Users/jacobstanford/Desktop/Mission11_Stanford/Mission11_Backend/obj/Debug/net9.0/Mission11_Backend.sourcelink.json
