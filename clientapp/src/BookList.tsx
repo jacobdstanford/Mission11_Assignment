@@ -45,9 +45,10 @@ const BookList: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        `/api/books?pageNumber=${page}&pageSize=${size}&sortOrder=${order}`
-      );
+        const response = await fetch(
+            `http://localhost:5260/api/books?pageNumber=${page}&pageSize=${size}&sortOrder=${order}`
+          );
+          
       const data = await response.json();
       setBooks(data.data);
       setPagination(data.pagination);
