@@ -1,38 +1,76 @@
 using Microsoft.AspNetCore.Mvc;
-using Mission11_Backend.Data;
-using Mission11_Backend.Models;
+using Microsoft.EntityFrameworkCore;
+using Mission11.Models;
 using System.Linq;
 
-namespace Mission11_Backend.Controllers
+namespace Mission11.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class BooksController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly BookstoreContext _context;
 
-        public BooksController(ApplicationDbContext context)
+
+
+
+        public BooksController(BookstoreContext context)
         {
             _context = context;
         }
 
+
+
+
         [HttpGet]
-        public IActionResult GetBooks(int page = 1, int pageSize = 5, string sortOrder = "asc")
+        public async Task<IActionResult> GetBooks(
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 5,
+            [FromQuery] string sortOrder = "asc"
+        )
         {
-            var booksQuery = _context.Books.AsQueryable();
 
-            // Sorting by Title (you can change to another field if needed)
-            booksQuery = sortOrder.ToLower() == "desc"
-                ? booksQuery.OrderByDescending(b => b.Title)
-                : booksQuery.OrderBy(b => b.Title);
 
-            var totalBooks = booksQuery.Count();
-            var books = booksQuery
-                .Skip((page - 1) * pageSize)
+
+
+            IQueryable<Book> query = _context.Books;
+
+            query = sortOrder.ToLower() == "desc"
+                ? query.OrderByDescending(b => b.Title)
+                : query.OrderBy(b => b.Title);
+
+
+
+
+
+            var totalCount = await query.CountAsync();
+            var totalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
+
+            var books = await query
+                .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
-                .ToList();
+                .ToListAsync();
 
-            return Ok(new { totalBooks, books });
+
+
+
+
+            var response = new
+            {
+                Data = books,
+                Pagination = new
+                {
+                    CurrentPage = pageNumber,
+                    PageSize = pageSize,
+                    TotalCount = totalCount,
+                    TotalPages = totalPages
+                }
+            };
+
+
+
+
+            return Ok(response);
         }
     }
 }
